@@ -1,3 +1,5 @@
+package evgeniy.ryzhikov;
+
 import java.util.Scanner;
 
 public class RolePlayingGame {
@@ -50,11 +52,13 @@ public class RolePlayingGame {
                 player.getLevel(),
                 player.getExperience(),
                 player.getHealth(),
-                player.getGold());
+                player.getGold(),
+                player.getForce(),
+                player.getDexterity(),
+                player.getCritical());
         System.out.println("1 - выйти в главное меню");
-        if (getNumber(1) == 1) {
-            return;
-        }
+        while (getNumber(1) != 1);
+
     }
 
     private void figth() {
@@ -65,6 +69,8 @@ public class RolePlayingGame {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        if(player.needLevelUp()) player.levelUp();
     }
 
     private void trade() {

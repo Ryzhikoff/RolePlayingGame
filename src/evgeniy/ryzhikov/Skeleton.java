@@ -1,3 +1,5 @@
+package evgeniy.ryzhikov;
+
 public class Skeleton extends Characters{
     public Skeleton() {
         super("Скелет",

@@ -1,3 +1,5 @@
+package evgeniy.ryzhikov;
+
 public abstract class Characters {
 
     private final String name;

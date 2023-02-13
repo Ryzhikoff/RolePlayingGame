@@ -1,3 +1,5 @@
+package evgeniy.ryzhikov;
+
 public class Medicament {
 
     private final int price;
@@ -21,4 +23,5 @@ public class Medicament {
     public int getHealth() {
         return health;
     }
+
 }

@@ -1,3 +1,5 @@
+package evgeniy.ryzhikov;
+
 public class Goblin extends Characters {
     public Goblin () {
         super("Гоблин",

@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+package evgeniy.ryzhikov;
+
 import java.util.Random;
 
 public class Figth extends Thread {
@@ -14,18 +14,18 @@ public class Figth extends Thread {
 
     @Override
     public void run() {
-        boolean whoIsFirst = new Random().nextBoolean();
-        prepareFigth(whoIsFirst);
+        boolean isPlayerFirst = new Random().nextBoolean();
+        prepareFigth(isPlayerFirst);
         while (true) {
 
-            if (whoIsFirst) {
+            if (isPlayerFirst) {
                 attack(player, monster);
             } else {
                 attack(monster, player);
             }
-            whoIsFirst = !whoIsFirst;
+            isPlayerFirst = !isPlayerFirst;
 
-            if(checkEndFigth()) {
+            if (checkEndFigth()) {
                 if (player.getHealth() <= 0) {
                     System.out.printf("К сожаление %s погиб в бою! \nИгра окончена!\n", player.getName());
                     System.exit(0);
@@ -47,16 +47,16 @@ public class Figth extends Thread {
         return player.getHealth() <= 0 || monster.getHealth() <= 0;
     }
 
-    private void attack(Characters one, Characters two) {
+    private void attack(Characters first, Characters second) {
 
-        if(isMiss(one)) {
-            System.out.printf("%s промахнулся!\n", one.getName());
+        if (isMiss(first)) {
+            System.out.printf("%s промахнулся!\n", first.getName());
             return;
         }
 
-        int force = getForce(one);
-        System.out.printf("%s(%d) нанес удар %s(%d) на %d\n", one.getName(), one.getHealth(), two.getName(), two.getHealth(), force);
-        two.setHealth(two.getHealth() - force);
+        int force = getForce(first);
+        System.out.printf("%s(%d) нанес удар %s(%d) на %d\n", first.getName(), first.getHealth(), second.getName(), second.getHealth(), force);
+        second.setHealth(second.getHealth() - force);
     }
 
     private boolean isMiss(Characters character) {
@@ -74,9 +74,9 @@ public class Figth extends Thread {
         return character.getForce();
     }
 
-    private void prepareFigth(boolean whoIsFirst) {
+    private void prepareFigth(boolean isPlayerFirst) {
         System.out.println("Ты отправился в лес... нужно быть осторожным!");
-        if (whoIsFirst) {
+        if (isPlayerFirst) {
             System.out.printf("Отправившись в лес %s во время заметил врага и первым нанес удар!\n", player.getName());
         } else {
             System.out.printf("Отправившись в лес %s не много задумался и не заметил как со спины неожиданно напал %s!\n", player.getName(), monster.getName());
