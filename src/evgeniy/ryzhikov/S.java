@@ -3,6 +3,10 @@ package evgeniy.ryzhikov;
 import java.util.*;
 
 public class S {
+
+    //допустимая длина имени
+    public static final int LENGTH_NAME = 20;
+
     //Игрок
     public static final int PLAYER_HEALTH = 100;
     public static final int PLAYER_FORCE = 10;

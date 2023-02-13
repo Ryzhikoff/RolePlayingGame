@@ -19,7 +19,7 @@ public class RolePlayingGame {
 
         String name = scanner.next();
         while (!checkName(name)) {
-            System.out.println("Имя может включать: буквы, цифры или символ подчеркивания");
+            System.out.printf("Имя может включать только буквы и цифры, а так же должно быть не более %d символов", S.LENGTH_NAME);
             name = scanner.next();
         }
         System.out.println("Привет " + name);
@@ -111,7 +111,8 @@ public class RolePlayingGame {
     }
 
     private boolean checkName(String name) {
-        return name.matches("\\w+");
+        if (name.length() > S.LENGTH_NAME) return false;
+        return name.matches("[A-Za-zА-Яа-я\\d\\s]+");
     }
 
     private boolean checkNumber(String number, String pattern) {
